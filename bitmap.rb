@@ -156,7 +156,7 @@ def instructions
 end
 def convertor
   system("clear")
-  puts "                             BitMap convertor"
+
   bit_set = BitMap.new
   bit_set.open_file("text.txt")
   i = 0
@@ -190,5 +190,5 @@ def menu
   elsif option == 3
     exit
   end
-end
+  end
 menu ##main menu
