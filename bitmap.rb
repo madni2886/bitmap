@@ -3,6 +3,9 @@ class BitMap
   def initialize
     super
     @counter1 = 0
+    @row    = 0
+    @col    = 0
+    @arr_2d = nil
   end
   def open_file(file)
     begin
@@ -88,9 +91,6 @@ class BitMap
         @arr_2d[index][col] = color
       }
     end
-  end
-  def continue
-    # code here
   end
   def compute(count)
     @counter  = 0
