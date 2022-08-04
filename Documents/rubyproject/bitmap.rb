@@ -7,6 +7,7 @@ class BitMap
   end
   def open_file(file)
     begin
+
       @exec=open(file).read.count("|")
       if @exec==0
         @exec+=1
@@ -20,12 +21,12 @@ class BitMap
       @command=@command.map(&:upcase)
       i=0
       while i<@exec
-      @command[i]=@command[i].split
-      i+=1
+        @command[i]=@command[i].split
+        i+=1
       end
     end
 
-    end
+  end
 
   def initialize_command
     @row    = @command[@counter1][@counter + 1].to_i
@@ -41,7 +42,7 @@ class BitMap
   end
   def check_command
     if @command[@counter1][0] != "I"
-      print 'command not initialize'
+      puts "command not initialize in #{counter1+1} bitmap"
       exit
     end
     length_i=@command[@counter1].count("I")
@@ -84,7 +85,7 @@ class BitMap
     color  = @command[@counter1][@counter + 4]
 
     if row1>@row ||col>@col||row2>@row
-      print "size of matrix is out of the bound in vertical"
+      print "size of matrix is out of the bound in verticals"
       exit
     elsif row1>row2
       print 'row 1 size is greater then row 2 in vertical '
@@ -104,11 +105,13 @@ class BitMap
 
 
     while @counter <@command[@counter1].length
+      check_command
       case @command[@counter1][@counter]
 
       when "I"
+
         initialize_command
-        check_command
+
       when  "L"
         set_pixels
       when "C"
@@ -124,7 +127,7 @@ class BitMap
       @counter += 1
     end
 
-    end
+  end
 
   def show
     if @arr_2d.eql?nil
@@ -148,11 +151,11 @@ bit_set=BitMap.new
 bit_set.open_file("text.txt")
 i=0
 while i<bit_set.exec
-  bit_set.compute(i)
+
   bit_set.row=0
   bit_set.col=0
-  bit_set.arr_2d=""
-
+  bit_set.arr_2d=nil
+  bit_set.compute(i)
   i+=1
 end
 
